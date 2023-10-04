@@ -2,7 +2,7 @@ import SelectDropDown from "./SelectDropDown";
 
 const TextBox = ({ style }) => {
   return (
-    <div>
+    <div class={style}>
       <SelectDropDown />
       <textarea 
         placeholder={style === "input" ?  "Enter text" : "Translation"}
