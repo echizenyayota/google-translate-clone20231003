@@ -37,13 +37,13 @@ const Modal = ({ setShowModal, languages }) => {
           {filteredLanguages?.map((filteredLanguage, _index) => (
             <div className="list-item">
               <div className="icon">
+              </div>
                 <li
                   key={_index}
                   onClick={handleClick}
                 >
                   {filteredLanguage}
                 </li>
-              </div>
             </div>
           ))}
         </ul>
