@@ -25,7 +25,8 @@ const App = () => {
     try {
       const response = await axios.request(options);
       console.log(response.data);
-      setLanguages(response.data);
+      const arrayOfData = Object.keys(response.data.data).map(key => response.data.data[key]);
+      setLanguages(arrayOfData);
     } catch(error) {
       console.log(error);
     }
