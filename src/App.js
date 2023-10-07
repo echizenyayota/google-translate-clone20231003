@@ -2,12 +2,40 @@ import TextBox from "./components/TextBox";
 import Arrows from "./components/Arrows";
 import Button from "./components/Button";
 import Modal from "./components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 const App = () => {
   const [inputLanguage, setInputLanguage] = useState("English");
   const [outputLanguage, setOutputLanguage] = useState("Japanese");
   const [showModal, setShowModal] = useState(null);
+  const [languages, setLanguages] = useState(null);
+
+  const getLanguages = async() => {
+    const options = {
+      method: 'GET',
+      url: 'https://g-translate1.p.rapidapi.com/languages',
+      headers: {
+        'X-RapidAPI-Host': process.env.REACT_APP_RAPID_API_HOST,
+        'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+      }    
+    };
+
+    try {
+      const response = await axios.request(options);
+      console.log(response.data);
+      setLanguages(response.data);
+    } catch(error) {
+      console.log(error);
+    }
+  };
+
+  console.log("languages", languages);
+
+  useEffect(() => {
+    getLanguages();
+  }, []);
 
   const handleClick = () => {
     setInputLanguage(outputLanguage);
