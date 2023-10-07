@@ -33,7 +33,7 @@ const App = () => {
           setShowModal={setShowModal}
         />
       </>}
-      {showModal && <Modal />}
+      {showModal && <Modal setShowModal={setShowModal} />}
     </div>
     
   );
