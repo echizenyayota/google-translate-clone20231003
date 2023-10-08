@@ -26,6 +26,7 @@ const App = () => {
       const response = await axios.request(options);
       console.log(response.data);
       const arrayOfData = Object.keys(response.data.data).map(key => response.data.data[key]);
+      arrayOfData.shift();
       setLanguages(arrayOfData);
     } catch(error) {
       console.log(error);
