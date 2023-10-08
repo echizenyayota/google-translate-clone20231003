@@ -12,6 +12,8 @@ const App = () => {
   const [showModal, setShowModal] = useState(null);
   const [languages, setLanguages] = useState(null);
 
+  console.log("inputLanguage", inputLanguage);
+
   const getLanguages = async() => {
     const options = {
       method: 'GET',
