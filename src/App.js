@@ -14,7 +14,6 @@ const App = () => {
   const [textToTranslate, setTextToTranslate] = useState("");
   const [translatedText, setTranslatedText] = useState("");
 
-
   console.log("inputLanguage", inputLanguage);
 
   const getLanguages = async() => {
@@ -93,7 +92,11 @@ const App = () => {
           style="output"
           setShowModal={setShowModal}
         />
+        <div className="button-container" onClick={translate}>
+          <Button />
+        </div>
       </>}
+      
       {showModal && <Modal 
         setShowModal={setShowModal} 
         languages={languages}
