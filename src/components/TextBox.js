@@ -1,6 +1,14 @@
 import SelectDropDown from "./SelectDropDown";
 
-const TextBox = ({ style, selectedLanguage, setShowModal }) => {
+const TextBox = ({ 
+  style, 
+  selectedLanguage, 
+  setShowModal, 
+  textToTranslate,
+  setTextToTranslate,
+  setTranslatedText,
+  translatedText
+}) => {
   return (
     <div className={style}>
       <SelectDropDown 
