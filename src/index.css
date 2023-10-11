@@ -145,3 +145,11 @@ input {
   padding: 18px;
   height: 25px;
 }
+
+.input .delete {
+  position: relative;
+  left: 250px;
+  top: -176px;
+  font-size: 25px;
+  color: #bdc1c6;
+}
