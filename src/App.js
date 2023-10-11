@@ -17,24 +17,8 @@ const App = () => {
   console.log("inputLanguage", inputLanguage);
 
   const getLanguages = async() => {
-    const options = {
-      method: 'GET',
-      url: 'https://g-translate1.p.rapidapi.com/languages',
-      headers: {
-        'X-RapidAPI-Host': process.env.REACT_APP_RAPID_API_HOST,
-        'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-      }    
-    };
-
-    try {
-      const response = await axios.request(options);
-      console.log(response.data);
-      const arrayOfData = Object.keys(response.data.data).map(key => response.data.data[key]);
-      arrayOfData.shift();
-      setLanguages(arrayOfData);
-    } catch(error) {
-      console.log(error);
-    }
+    const response = await axios("http://localhost:8000/languages");
+    setLanguages(response.data);
   };
 
   console.log("languages", languages);
