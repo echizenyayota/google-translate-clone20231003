@@ -31,3 +31,27 @@ app.get("/languages", async(req, res) => {
     res.status(500).json({message: err});
   }
 });
+
+app.get("/translation", async(req, res) => {
+  const {textToTranslate, outputLanguage, inputLanguage} = req.query;
+  const options = {
+    method: "GET",
+    params: {
+      text: textToTranslate,
+      tl: outputLanguage,
+      sl: inputLanguage,
+    },
+    headers: {
+      'X-RapidAPI-Host': process.env.REACT_APP_RAPID_API_HOST,
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
+    },
+  }
+
+  try {
+    const response = await axios("https://g-translate1.p.rapidapi.com/translate", options);
+    res.status(200).json(response.data.data.translation);
+  } catch(err) {
+    console.log(err);
+    res.status(500).json({message: err});
+  }
+});
