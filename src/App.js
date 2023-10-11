@@ -24,27 +24,13 @@ const App = () => {
   console.log("languages", languages);
 
   const translate = async () => {
-    const options = {
-      method: "GET",
-      url: "https://g-translate1.p.rapidapi.com/translate",
-      params: {
-        text: textToTranslate,
-        tl: outputLanguage,
-        sl: inputLanguage
-      },
-      headers: {
-        'X-RapidAPI-Host': process.env.REACT_APP_RAPID_API_HOST,
-        'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-      }
-    };
-
-    try {
-      const response = await axios.request(options);
-      console.log(response.data);
-      setTranslatedText(response.data.data.translation);
-    } catch(error) {
-      console.log(error);
+    const data = {
+      textToTranslate, outputLanguage, inputLanguage 
     }
+    const response = await axios("http://localhost:8000/translation", {
+      params: data,
+    });
+    setTranslatedText(response.data);
   }
 
   console.log("translatedText", translatedText);
